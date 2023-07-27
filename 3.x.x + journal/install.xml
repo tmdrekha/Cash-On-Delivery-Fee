@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>TMD Case On Delivery Fee</name>
+	<id>TMD Case On Delivery Fee</id>
+	<code>#TQM</code>
+	<version>1.0</version>
+	<author>TMD(opencartextensions.in)</author>
+	<link>http://opencartextensions.in/</link>
+		
+<file path="catalog/model/extension/payment/cod.php">
+		<operation error="log">
+			<search><![CDATA[$method_data = array();]]></search>
+			<add position="before"><![CDATA[			
+	//cod fee code start	
+			if (isset($this->session->data['shipping_method'])) {
+				$shipping_method = $this->session->data['shipping_method']['code'];
+			} else {
+				$shipping_method = '';
+			}
+			
+			if(!empty($this->config->get('total_tmdcodfee_delivery'))){
+				$restrict_delivery=$this->config->get('total_tmdcodfee_delivery');
+			}else{
+				$restrict_delivery=array();
+			}	
+				
+			if(in_array($shipping_method, $restrict_delivery)){
+			$status = false;
+			}else{
+			$status = true;
+			}
+						
+	//cod fee code end
+	
+		]]></add>
+		</operation>
+	</file>
+
+</modification>
