@@ -1,22 +1,21 @@
 <?php
 class Tmd {
-	
+private $config;
+private $session;
+private $db;	
 	public function __construct($registry) {
 		$this->config = $registry->get('config');
-		$this->customer = $registry->get('customer');
 		$this->session = $registry->get('session');
 		$this->db = $registry->get('db');
-		$this->tax = $registry->get('tax');
-		$this->weight = $registry->get('weight');
 
 		
 	}
 
 	public function loadkeyform($data) {
 		
-		$user_token= $this->session->data['user_token'];
+		$token= $this->session->data['token'];
 		$regkey= $this->config->get($data['code']);
-		$url = 'https://www.opencartextensions.in/index.php?route=api/newkey&foldername='.$data['route'].'&regkey='.$regkey.'&user_token='.$user_token;
+		$url = 'https://www.opencartextensions.in/index.php?route=api/newkey&foldername='.$data['route'].'&regkey='.$regkey.'&token='.$token;
 		$curl = curl_init($url);
 		curl_setopt($curl, CURLOPT_HEADER, 0);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
