@@ -15,7 +15,7 @@ class Tmdcodfee extends \Opencart\System\Engine\Model {
 	if (!empty($this->session->data['guest']['customer_group_id'])) {
 		$customer_group_guest = $this->session->data['guest']['customer_group_id'];
 	} else {
-		$customer_group_guest = '0';
+		$customer_group_guest = $this->config->get('config_customer_group_id');
 	}
 
 	$codtitle_info = $this->config->get('total_tmdcodfee_title');
@@ -24,7 +24,7 @@ class Tmdcodfee extends \Opencart\System\Engine\Model {
 
  	$codfee_infos = $this->config->get('total_tmdcodfee_priceinfo');
 
- 		$codfeetotal = 0;
+ 		$codfeetotal = 0.00;
  		if(!empty($codfee_infos)){
 			foreach ($codfee_infos as $codfee_info) {
 
