@@ -1,7 +1,7 @@
 <?php
 // Heading
-$_['heading_title1']    = 'Cash On Delivery Fee';
-$_['heading_title']    = '<span style="color:#23A8DA;font-weight:bold;">Cash On Delivery Fee</span>';
+$_['heading_title1']    = 'TMD Cash On Delivery Fee';
+$_['heading_title']    = '<span style="color:#23A8DA;font-weight:bold;">TMD Cash On Delivery Fee</span>';
 
 
 // Text

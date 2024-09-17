@@ -169,6 +169,14 @@ class ControllerExtensionTotalTmdcodfee extends Controller {
 		}else{
 			$data['total_tmdcodfee_delivery_fee']=array();
 		}
+
+		if (isset($this->session->data['success'])) {
+			$data['success'] = $this->session->data['success'];
+
+			unset($this->session->data['success']);
+		} else {
+			$data['success'] = '';
+		}
 		
 
 		//shippings
@@ -220,7 +228,7 @@ class ControllerExtensionTotalTmdcodfee extends Controller {
 		if (!$this->user->hasPermission('modify', 'extension/total/tmdcodfee')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
-		
+
 		$tmdcodfee=$this->config->get('tmdkey_codfee');
 		if (empty(trim($tmdcodfee))) {			
 		$this->error['warning'] ='Module will Work after add License key!';

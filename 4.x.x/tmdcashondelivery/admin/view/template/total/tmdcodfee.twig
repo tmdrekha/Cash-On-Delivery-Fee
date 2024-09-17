@@ -5,7 +5,7 @@
       <div class="float-end">
         <button type="submit" form="form-total" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fas fa-save"></i></button>
         <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fas fa-reply"></i></a></div>
-      <h1>{{ heading_title1 }}</h1>
+      <h1>{{ heading_title }}</h1>
       <ol class="breadcrumb">
 				{% for breadcrumb in breadcrumbs %}
 					<li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
@@ -108,7 +108,7 @@
                   {% for extension in extensions %} 
                 <div class="checkbox">
                   <label>
-                      {% if extension.code in total_codfee_delivery %}
+                      {% if extension.code in total_tmdcodfee_delivery %}
                     <input type="checkbox" name="total_tmdcodfee_delivery[]" checked="checked" value="{{ extension.code }}" id="input-total_tmdcodfee_delivery"> {{ extension['name'] }} 
                      {% else %} 
                     <input type="checkbox" name="total_tmdcodfee_delivery[]" value="{{ extension.code }}" id="input-total_tmdcodfee_delivery"> {{ extension['name'] }} 
@@ -128,10 +128,10 @@
                   {% for extension in extensions %} 
                 <div class="checkbox">
                   <label>
-                      {% if extension.code in total_codfee_delivery_fee %}
-                    <input type="checkbox" name="total_codfee_delivery_fee[]" checked="checked" value="{{ extension.code }}" id="input-total_tmdcodfee_delivery_fee"> {{ extension['name'] }} 
+                      {% if extension.code in total_tmdcodfee_delivery_fee %}
+                    <input type="checkbox" name="total_tmdcodfee_delivery_fee[]" checked="checked" value="{{ extension.code }}" id="input-total_tmdcodfee_delivery_fee"> {{ extension['name'] }} 
                      {% else %} 
-                    <input type="checkbox" name="total_codfee_delivery_fee[]" value="{{ extension.code }}" id="input-total_tmdcodfee_delivery_fee"> {{ extension['name'] }} 
+                    <input type="checkbox" name="total_tmdcodfee_delivery_fee[]" value="{{ extension.code }}" id="input-total_tmdcodfee_delivery_fee"> {{ extension['name'] }} 
                      {% endif %}  
                   </label>
                 </div>
@@ -154,7 +154,7 @@
                   </thead>
                   <tbody>
                     {% set codfee_row = 0 %} 
-                    {% for total_tmdcodfee_priceinfo in tmdcodfee_priceinfos %} 
+                    {% for total_tmdcodfee_priceinfo in total_tmdcodfee_priceinfos %} 
                     <tr id="codfee-row{{ codfee_row }}">
 					 <td class="text-start"><select name="total_tmdcodfee_priceinfo[{{ codfee_row }}][customer_group_id]" class="form-select">
                             {% for customer_group in customer_groups %}
@@ -166,12 +166,12 @@
                       <td class="text-right"><div class="row">
                         <div class="col-sm-6">
                           <div class="input-group"><span class="input-group-text">{{ text_min }}</span>
-                            <input type="text" name="total_tmdcodfee_priceinfo[{{ codfee_row }}][min]" value="{{ total_codfee_priceinfo['min'] }}" placeholder="{{ text_min }}" class="form-control" />
+                            <input type="text" name="total_tmdcodfee_priceinfo[{{ codfee_row }}][min]" value="{{ total_tmdcodfee_priceinfo['min'] }}" placeholder="{{ text_min }}" class="form-control" />
                           </div>
                       </div>
                       <div class="col-sm-6">
                           <div class="input-group"><span class="input-group-text">{{ text_max }}</span>
-                            <input type="text" name="total_tmdcodfee_priceinfo[{{ codfee_row }}][max]" value="{{ total_codfee_priceinfo['max'] }}" placeholder="{{ text_max }}" class="form-control" />
+                            <input type="text" name="total_tmdcodfee_priceinfo[{{ codfee_row }}][max]" value="{{ total_tmdcodfee_priceinfo['max'] }}" placeholder="{{ text_max }}" class="form-control" />
                           </div>
                       </div></div>
                       </td>

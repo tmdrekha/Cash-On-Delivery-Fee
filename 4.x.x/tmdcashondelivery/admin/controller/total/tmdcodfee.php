@@ -85,7 +85,7 @@ public function index(): void {
 		$data['total_tmdcodfee_delivery'] = $this->config->get('total_tmdcodfee_delivery');
 		$data['total_tmdcodfee_delivery_fee'] = $this->config->get('total_tmdcodfee_delivery_fee');
 		
-		$data['tmdcodfee_priceinfos'] = $this->config->get('total_tmdcodfee_priceinfo');
+		$data['total_tmdcodfee_priceinfos'] = $this->config->get('total_tmdcodfee_priceinfo');
 		
 		// language
 		$this->load->model('localisation/language');
@@ -120,7 +120,7 @@ public function index(): void {
 				}	
 			}
 		}
-	
+
 		$this->load->model('localisation/tax_class');
 
 		$data['tax_classes'] = $this->model_localisation_tax_class->getTaxClasses();

@@ -13,7 +13,7 @@ private $db;
 
 	public function loadkeyform($data) {
 		
-		$token= $this->session->data['token'];
+		$token= $this->session->data['user_token'];
 		$regkey= $this->config->get($data['code']);
 		$url = 'https://www.opencartextensions.in/index.php?route=api/newkey&foldername='.$data['route'].'&regkey='.$regkey.'&token='.$token;
 		$curl = curl_init($url);

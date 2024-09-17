@@ -18,7 +18,7 @@ class ModelExtensionTotalTmdcodfee extends Model {
 	} else {
 		$customer_group_guest = '0';
 	}
-	// /print_r($customer_group_guest);die();
+	
 	    	
 	//title
 	$codtitle_info = $this->config->get('total_tmdcodfee_title');
@@ -27,10 +27,10 @@ class ModelExtensionTotalTmdcodfee extends Model {
 
  	$codfee_infos = $this->config->get('total_tmdcodfee_priceinfo');
 
- 		$codfeetotal = '';
+	 	$codfeetotal = 0.00;
  		if(!empty($codfee_infos)){
 			foreach ($codfee_infos as $codfee_info) {
-
+				
 				$codfee_total   = $codfee_info['cod_fee'];
 				$min            = $codfee_info['min'];
 				$max            = $codfee_info['max'];
@@ -44,11 +44,11 @@ class ModelExtensionTotalTmdcodfee extends Model {
 				}elseif(empty($customer_group_id)){
 				   $customer_group_id = $customer_group_guest;	
 				}
-
+				
 				
 				if($customer_group_id==$customer_group ||  empty($customer_group)){
 					if($sub_total>=$min && $sub_total<=$max){
-
+						
 						if($sub_total>=$min && $sub_total<=$max){
 							$codfee_total = $codfee_info['cod_fee'];
 						}else{
@@ -88,7 +88,7 @@ class ModelExtensionTotalTmdcodfee extends Model {
 		}
 
 		$codfeetotal = $this->tax->calculate($codfeetotal, $this->config->get('total_tmdcodfee_taxclass'), $this->config->get('config_tax'));
-
+		
 		if (isset($this->session->data['shipping_method'])) {
 		    $shipping_method = explode('.',$this->session->data['shipping_method']['code']);
 		    $shipping_method = $shipping_method[0];
@@ -144,5 +144,6 @@ class ModelExtensionTotalTmdcodfee extends Model {
 				}
 			}
 	    }
+		
 	}
 }

@@ -19,19 +19,17 @@
 			}
 			
 			if(!empty($this->config->get('total_tmdcodfee_delivery'))){
-				$restrict_delivery=$this->config->get('total_tmdcodfee_delivery');
+				$restrict_delivery = $this->config->get('total_tmdcodfee_delivery');
 			}else{
-				$restrict_delivery=array();
+				$restrict_delivery = array();
 			}	
 				
 			if(in_array($shipping_method, $restrict_delivery)){
-			$status = false;
+				$status = false;
 			}else{
-			$status = true;
+				$status = true;
 			}
-						
 	//cod fee code end
-	
 		]]></add>
 		</operation>
 	</file>
